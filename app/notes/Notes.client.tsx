@@ -17,7 +17,7 @@ const Notes = () => {
 
   const { data, isSuccess } = useQuery({
     queryKey: ['notes', query, page],
-    queryFn: () => fetchNotes(page, query),
+    queryFn: () => fetchNotes(page, query), // ✅ Правильний порядок параметрів
     placeholderData: keepPreviousData,
     refetchOnMount: false,
   });

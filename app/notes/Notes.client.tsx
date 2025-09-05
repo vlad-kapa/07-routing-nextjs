@@ -18,7 +18,7 @@ const Notes = () => {
 
   const { data, isSuccess } = useQuery({
     queryKey: ['notes', query, page],
-    queryFn: () => fetchNotes(query, page),
+    queryFn: () => fetchNotes(page, query),
     placeholderData: keepPreviousData,
     refetchOnMount: false,
   });
@@ -32,7 +32,7 @@ const Notes = () => {
     <div className={css.app}>
       <header className={css.toolbar}>
         <SearchBox onChange={handleSearch} />
-        {isSuccess && data.totalPages > 1 && (
+        {isSuccess && data && data.totalPages > 1 && (
           <Pagination
             page={page}
             totalPages={data.totalPages}

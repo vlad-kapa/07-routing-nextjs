@@ -12,29 +12,35 @@ import Modal from '@/components/Modal/Modal';
 
 const Notes = () => {
   const [query, setQuery] = useState('');
-  const [debouncedQuery, setDebouncedQuery] = useState('');
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedQuery(query);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [query]);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const { data, isSuccess } = useQuery({
-    queryKey: ['notes', debouncedQuery, page],
-    queryFn: () => fetchNotes(page, debouncedQuery),
+    queryKey: ['notes', query, page],
+    queryFn: () => fetchNotes(page, query),
     placeholderData: keepPreviousData,
     refetchOnMount: false,
   });
 
   const handleSearch = (value: string) => {
-    setQuery(value);
-    setPage(1);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    
+    timeoutRef.current = setTimeout(() => {
+      setQuery(value);
+      setPage(1);
+    }, 300);
   };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className={css.app}>

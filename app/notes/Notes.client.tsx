@@ -9,7 +9,6 @@ import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import Modal from '@/components/Modal/Modal';
-import { useDebouncedCallback } from 'use-debounce';
 
 const Notes = () => {
   const [query, setQuery] = useState('');

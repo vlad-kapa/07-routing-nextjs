@@ -12,20 +12,29 @@ import Modal from '@/components/Modal/Modal';
 
 const Notes = () => {
   const [query, setQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
   const { data, isSuccess } = useQuery({
-    queryKey: ['notes', query, page],
-    queryFn: () => fetchNotes(page, query), // ✅ Правильний порядок параметрів
+    queryKey: ['notes', debouncedQuery, page],
+    queryFn: () => fetchNotes(page, debouncedQuery),
     placeholderData: keepPreviousData,
     refetchOnMount: false,
   });
 
-  const handleSearch = useDebouncedCallback((value: string) => {
+  const handleSearch = (value: string) => {
     setQuery(value);
     setPage(1);
-  }, 300);
+  };
 
   return (
     <div className={css.app}>

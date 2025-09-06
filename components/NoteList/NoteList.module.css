@@ -38,7 +38,7 @@
   overflow: hidden;
 }
 
-.button {
+.deleteBtn {
   align-self: flex-end;
   padding: 6px 12px;
   font-size: 14px;
@@ -50,7 +50,7 @@
   transition: background-color 0.2s ease;
 }
 
-.button:hover {
+.deleteBtn:hover {
   background-color: #bb2d3b;
 }
 

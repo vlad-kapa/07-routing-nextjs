@@ -34,7 +34,7 @@ function NoteList({ notesData }: NoteListProps) {
                 View Details
               </Link>
               <button
-                className={css.buttonRed}
+                className={css.deleteBtn}
                 onClick={() => mutation.mutate(note.id)}
               >
                 Delete

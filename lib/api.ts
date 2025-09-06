@@ -1,5 +1,6 @@
 import { Note } from "@/types/note";
 import axios from "axios";
+import { number } from "yup";
 
 axios.defaults.baseURL = "https://notehub-public.goit.study/api";
 axios.defaults.headers.common["Authorization"] = `Bearer ${
@@ -15,7 +16,7 @@ interface fetchNotesProps {
   tag?: string;
   perPage: number;
 }
-export async function fetchNotes(
+export default async function fetchNotes(
   page: number,
   searchQuery?: string,
   tag?: string

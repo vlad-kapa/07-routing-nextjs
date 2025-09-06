@@ -1,5 +1,6 @@
+import css from "./page.module.css";
 const loading = () => {
-  return <p>Loading, please wait...</p>;
+  return <p className={css.text}>Loading, please wait...</p>;
 };
 
 export default loading;

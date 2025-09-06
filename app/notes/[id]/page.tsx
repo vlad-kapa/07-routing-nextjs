@@ -6,10 +6,10 @@ import {
 } from "@tanstack/react-query";
 import NoteDetailsClient from "./NoteDetails.client";
 
-interface TaskDetailProps {
+interface NoteDetailProps {
   params: Promise<{ id: string }>;
 }
-const TaskDetails = async ({ params }: TaskDetailProps) => {
+const NoteDetails = async ({ params }: NoteDetailProps) => {
   const { id } = await params;
   const queryClient = new QueryClient();
   queryClient.prefetchQuery({
@@ -23,4 +23,4 @@ const TaskDetails = async ({ params }: TaskDetailProps) => {
   );
 };
 
-export default TaskDetails;
+export default NoteDetails;

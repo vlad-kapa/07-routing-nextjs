@@ -1,5 +1,5 @@
-const ModalDefault = () => {
-  return <div />;
+const Modal = () => {
+  return null;
 };
 
-export default ModalDefault;
+export default Modal;

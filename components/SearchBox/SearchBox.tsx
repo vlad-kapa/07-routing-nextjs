@@ -1,18 +1,11 @@
-import { useDebouncedCallback } from 'use-debounce';
 import css from "./SearchBox.module.css";
-
 interface SearchBoxProps {
-  onSearch: (value: string) => void;
+  setQuery: (value: string) => void;
 }
 
-function SearchBox({ onSearch }: SearchBoxProps) {
-  const debouncedSearch = useDebouncedCallback((value: string) => {
-    onSearch(value);
-  }, 300);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    debouncedSearch(event.target.value);
-  };
+function SearchBox({ setQuery }: SearchBoxProps) {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setQuery(event.target.value);
 
   return (
     <input

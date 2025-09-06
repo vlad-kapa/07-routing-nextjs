@@ -2,7 +2,7 @@
 import Pagination from "@/components/Pagination/Pagination";
 import css from "./NotesPage.module.css";
 import SearchBox from "@/components/SearchBox/SearchBox";
-import { fetchNotes } from "@/lib/api";
+import fetchNotes from "@/lib/api";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
@@ -53,7 +53,7 @@ const NotesClientPage = ({ tag }: NotesClientPageProps) => {
           />
         )}
         <button onClick={openModal} type="button" className={css.button}>
-          +
+          Create note +
         </button>
       </header>
 

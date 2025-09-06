@@ -20,8 +20,7 @@ const TagsMenu = () => {
               <Link
                 onClick={toggle}
                 href={`/notes/filter/${item}`}
-                className={css.menuLink}
-              >
+                className={css.menuLink}>
                 {item}
               </Link>
             </li>

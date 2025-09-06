@@ -30,11 +30,11 @@ function NoteList({ notesData }: NoteListProps) {
             <p className={css.content}>{note.content}</p>
             <div className={css.footer}>
               <span className={css.tag}>{note.tag}</span>
-              <Link href={`/notes/${note.id}`} className={css.button}>
+              <Link href={`/notes/${note.id}`} className={css.buttonGreen}>
                 View Details
               </Link>
               <button
-                className={css.button}
+                className={css.buttonRed}
                 onClick={() => mutation.mutate(note.id)}
               >
                 Delete
